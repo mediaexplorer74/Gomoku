@@ -11,7 +11,7 @@
     Publisher="CN=Admin"
     Version="9.10.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="2056de31-8016-42d1-9e6d-a583e36b9bd0" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="2056de31-8016-42d1-9e6d-a583e36b9bd0" PhonePublisherId="00263601-0004-5008-2010-005500000037"/>
 
   <Properties>
     <DisplayName>Gomoku v9.10</DisplayName>
