@@ -1,0 +1,62 @@
+﻿<!--Application x:Class="Gomoku.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="using:Gomoku" 
+             >
+    <Application.Resources>
+       
+            <Style x:Key="PlayAppBarButtonStyle" TargetType="Button">
+    
+            </Style>
+
+            <Style x:Key="UndoAppBarButtonStyle" TargetType="Button">
+   
+            </Style>
+
+           <Style x:Key="SettingsAppBarButtonStyle" TargetType="Button">
+      
+          </Style>
+
+           <Style x:Key="FavoriteAppBarButtonStyle" TargetType="Button">
+         
+          </Style>
+
+    </Application.Resources>
+</Application-->
+
+
+<Application x:Class="Gomoku.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="using:Gomoku">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Add other resource dictionary files here like this: -->
+                <!-- <ResourceDictionary Source="/Styles/CommonStyles.xaml"/> -->
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Your existing styles -->
+            <Style x:Key="PlayAppBarButtonStyle" TargetType="Button">
+                <!-- TODO: Define style properties here -->
+            </Style>
+
+            <Style x:Key="UndoAppBarButtonStyle" TargetType="Button">
+                <!-- Define the style properties here -->
+            </Style>
+
+            <Style x:Key="SettingsAppBarButtonStyle" TargetType="Button">
+                <!-- Define the style properties here -->
+            </Style>
+
+            <Style x:Key="FavoriteAppBarButtonStyle" TargetType="Button">
+                <!-- Define the style properties here -->
+            </Style>
+
+            <Style x:Key="RemoveAdsAppBarButtonStyle" TargetType="Button">
+            <!-- Define the style properties here -->
+            </Style>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

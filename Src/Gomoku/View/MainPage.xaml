@@ -1,0 +1,158 @@
+﻿<Page 
+    x:Class="Gomoku.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+      xmlns:local="using:Gomoku" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+>
+    <Grid>
+        <Grid x:Name="LayoutRoot" Background="#FF094DB5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <MediaElement x:Name="myValidSoundMediaElement" Source="/Sounds/valid.wav" AutoPlay="True" IsLooping="True" />
+            <StackPanel x:Name="TitlePanel" Grid.Row="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Uid="ApplicationTitle" x:Name="ApplicationTitle" 
+                               FontWeight="Bold" FontSize="14" Grid.Column="0"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+                    <Grid Grid.Column="2" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="myScaleingFactor" HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center" Grid.Column="0" 
+                                   Text=" 100% " 
+                                   FontWeight="Bold" FontSize="14" Foreground="White" />
+                        
+                            <Image x:Name="myMagnifyAddImage" 
+                               Source="/Images/Appbar/appbar.magnify.add.png" Grid.Column="1" 
+                               Height="48" Width="48" HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" Tapped="myMagnifyAddImage_MouseLeftButtonUp"
+                               />
+                        
+                                <Image x:Name="myMagnifyMinusImage" 
+                               Source="/Images/Appbar/appbar.magnify.minus.png" 
+                               Grid.Column="2" 
+                               Height="48" Width="48" HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" Tapped="myMagnifyMinusImage_MouseLeftButtonUp"/>
+                        
+                    </Grid>
+                </Grid>
+            </StackPanel>
+            
+            <ScrollViewer x:Name="ContentPanelSrollViewer" Grid.Row="1" HorizontalScrollBarVisibility="Auto" 
+                          VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid x:Name="ContentPanel" />
+            </ScrollViewer>
+            
+            <Grid x:Name="SettingsGrid" Grid.Row="1" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Padding="20,20,20,20" Grid.Row="0" Grid.Column="0" Text="Table Size" FontSize="48" />
+                <Grid x:Name="tableSizeGrid" Grid.Row="0" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Content="Small" FontSize="32" Padding="2,-8,0,0" Name="mySmallTableSizeRadioButton" Grid.Column="0" GroupName="3" />
+                    <RadioButton Content="Medium" FontSize="32" Padding="2,-8,0,0" Name="myMediumTableSizeRadioButton" Grid.Column="1" GroupName="3" />
+                    <RadioButton Content="Large" FontSize="32" Padding="2,-8,0,0" Name="myLargeTableSizeRadioButton" Grid.Column="2" GroupName="3" />
+                </Grid>
+                <TextBlock Padding="20,20,20,20" Grid.Row="1" Grid.Column="0" Text="Game Mode" FontSize="48" />
+                <Grid x:Name="gameModeGrid" Grid.Row="1" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Content="Computer" FontSize="32" Padding="2,-8,0,0" Name="myAgainstComputerRadioButton" Grid.Column="0" GroupName="1" />
+                    <RadioButton Content="2 Players" FontSize="32" Padding="2,-8,0,0" Name="myTwoPlayerRadioButton" Grid.Column="2" GroupName="1" />
+                </Grid>
+                <TextBlock Padding="20,20,20,20" Grid.Row="2" Grid.Column="0" Text="Starting Player" FontSize="48" />
+                <Grid x:Name="startingPlayerGrid" Grid.Row="2" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Content="Computer" FontSize="32" Padding="2,-8,0,0" Name="myCumputerStartingRadioButton" Grid.Column="0" GroupName="2" />
+                    <RadioButton Content="Me" FontSize="32" Padding="2,-8,0,0" Name="myMeStartingRadioButton" Grid.Column="1" GroupName="2" />
+                    <RadioButton Content="By Turns" FontSize="32" Padding="2,-8,0,0" Name="myByTurnsStartingRadioButton" Grid.Column="2" GroupName="2" />
+                </Grid>
+                <TextBlock Padding="20,20,20,20" Grid.Row="3" Grid.Column="0" Text="Players Name" FontSize="48" />
+                <Grid x:Name="playersNameGrid" Grid.Row="3" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="First" Padding="2,2,2,2" Grid.Column="0" FontSize="32" VerticalAlignment="Center" />
+                    <TextBox Width="160" HorizontalAlignment="Left" Height="32" Name="myFirstPlayerNameTextBox" Grid.Column="1" />
+                    <TextBlock Text="Second" Padding="2,2,2,2" Grid.Column="2" FontSize="32" VerticalAlignment="Center" />
+                    <TextBox Width="160" HorizontalAlignment="Left" Height="32" Name="mySecondPlayerNameTextBox" Grid.Column="3" />
+                </Grid>
+                <TextBlock x:Name="aiTextBlock" Padding="20,20,20,20" Grid.Row="4" Grid.Column="0" Text="AI Strength " FontSize="48" />
+                <Grid x:Name="aiGrid" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
+                    <Slider Width="500" Minimum="0" Maximum="4" Name="aiSlider" />
+                </Grid>
+                <TextBlock Padding="20,20,20,20" Grid.Row="5" Grid.Column="0" Text="Skin (tap the image)" FontSize="48" />
+                <Grid x:Name="tapImageSkinGrid" Grid.Row="5" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="mySkinImage" Grid.Column="1" Width="100" Height="100" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />                   
+                </Grid.ColumnDefinitions>
+                <Button x:Name="myNewGameButton" Grid.Column="0" Content="Play" Tapped="myNewGameButton_Click"/>
+                <!--StaticResource ResourceKey="PlayAppBarButtonStyle" /-->
+
+                <Button x:Name="myUndoButton" Grid.Column="1" Visibility="Visible" Content="Undo" Tapped="myUndoButton_Click"/>
+                <!--StaticResource ResourceKey="UndoAppBarButtonStyle" /-->
+
+                <Button x:Name="mySettingsButton" Grid.Column="2" Content="Settings" Tapped="mySettingsButton_Click"/>
+                <!--StaticResource ResourceKey="SettingsAppBarButtonStyle" /-->
+
+                <Button x:Name="myReviewButton" Grid.Column="3" Content="Rate and Review" Tapped="myReviewButton_Click" HorizontalAlignment="Right"/>
+                <!--StaticResource ResourceKey="FavoriteAppBarButtonStyle" /-->
+
+                <!--Button x:Name="myRemoveAdsButton" Grid.Column="4" Content="Remove ad." Tapped="myRemoveAdsButton_Click"/-->
+                <!--StaticResource ResourceKey="RemoveAdsAppBarButtonStyle" /-->
+
+            </Grid>
+        </Grid>
+   </Grid>
+</Page>
